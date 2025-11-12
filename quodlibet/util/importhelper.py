@@ -66,8 +66,12 @@ def get_importables(folder):
         return f == "__init__.py"
 
     first = True
-    for root, dirs, names in os.walk(folder):
+    for root, dirs, names in os.walk(folder, followlinks=True):
         # Ignore packages like "_shared"
+        if basename(root).startswith(("_", ".")):
+            del dirs[:]
+            continue
+
         for d in dirs:
             if d.startswith(("_", ".")):
                 dirs.remove(d)
