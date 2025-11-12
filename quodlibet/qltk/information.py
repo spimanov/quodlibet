@@ -9,7 +9,7 @@
 import time
 from collections import defaultdict
 
-from gi.repository import Gtk, Pango
+from gi.repository import Gdk, Gtk, Pango
 
 from quodlibet.qltk import add_css
 from senf import fsn2text
@@ -592,6 +592,15 @@ class Information(Window, PersistentWindowMixin):
             connect_destroy(library, "removed", self.__check_removed)
         self.__songs = songs
         self.__update(library)
+
+        self.connect("key-press-event", self.__on_key_press)
+
+    def __on_key_press(self ,widget, event):
+        # Check if the pressed key is Escape
+        if event.keyval == Gdk.KEY_Escape:
+            self.destroy()  # Close the window
+            return True  # Indicate that the event has been handled
+        return False  # Let other handlers process the event
 
     def do_focus(self, direction):
         # Override default focus behavior
