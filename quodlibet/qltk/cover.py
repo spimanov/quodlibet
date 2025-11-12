@@ -21,7 +21,6 @@ from quodlibet.qltk.image import (
     get_surface_for_pixbuf,
 )
 
-
 # TODO: neater way of managing dependency on this particular plugin
 ALBUM_ART_PLUGIN_ID = "Download Album Art"
 
@@ -30,7 +29,10 @@ class BigCenteredImage(qltk.Window):
     """Load an image and display it, scaling it down to the parent window size."""
 
     def __init__(self, title, fileobj, parent, scale=0.5):
-        super().__init__(type=Gtk.WindowType.POPUP)
+        # Using type=Gtk.WindowType.POPUP is a bad idea, windows of such type are not
+        # controlled by the WM, use set_decorated(False) instead
+        super().__init__()
+        self.set_decorated(False)
         self.set_type_hint(Gdk.WindowTypeHint.TOOLTIP)
 
         assert parent
@@ -39,6 +41,7 @@ class BigCenteredImage(qltk.Window):
 
         self.set_position(Gtk.WindowPosition.CENTER_ON_PARENT)
 
+        self.__image = None
         # If image fails to set, abort construction.
         if not self.set_image(fileobj, parent, scale):
             self.destroy()
@@ -47,14 +50,30 @@ class BigCenteredImage(qltk.Window):
         event_box = Gtk.EventBox()
         event_box.add(self.__image)
 
+        event_box.add_events(
+            Gdk.EventMask.BUTTON_PRESS_MASK
+            | Gdk.EventMask.BUTTON_RELEASE_MASK
+            | Gdk.EventMask.POINTER_MOTION_MASK
+        )
+        event_box.set_can_focus(True)
+        self._event_box = event_box
+
         frame = Gtk.Frame()
         frame.set_shadow_type(Gtk.ShadowType.OUT)
         frame.add(event_box)
 
         self.add(frame)
 
-        event_box.connect("button-press-event", self.__destroy)
-        event_box.connect("key-press-event", self.__destroy)
+        self.__start_drag_x = None
+        self.__start_drag_y = None
+        self.__win_pos_x = None
+        self.__win_pos_y = None
+        self.__dragged = False
+        event_box.connect("button-press-event", self.__on_button_press)
+        event_box.connect("button-release-event", self.__on_button_release)
+        event_box.connect("motion-notify-event", self.__on_motion_notify)
+        event_box.connect("key-press-event", self.__on_key_press)
+        event_box.connect("show", self.__on_window_show)
 
         self.get_child().show_all()
 
@@ -73,10 +92,17 @@ class BigCenteredImage(qltk.Window):
         if not pixbuf:
             return False
 
-        self.__image = Gtk.Image()
+        if self.__image is None:
+            self.__image = Gtk.Image()
         self.__image.set_from_surface(get_surface_for_pixbuf(self, pixbuf))
 
         return True
+
+    def update_image(self, title, fileobj, parent, scale=0.5):
+        assert parent
+        parent = qltk.get_top_parent(parent)
+        if not self.set_image(fileobj, parent, scale):
+            return
 
     def __calculate_screen_width(self, parent, scale=0.5):
         width, height = parent.get_size()
@@ -86,6 +112,51 @@ class BigCenteredImage(qltk.Window):
 
     def __destroy(self, *args):
         self.destroy()
+
+    def __on_button_press(self, widget, event):
+        if event.button == Gdk.BUTTON_PRIMARY:  # Left mouse button
+            # Store initial position for drag operations
+            self.__start_drag_x = event.x_root
+            self.__start_drag_y = event.y_root
+            self.__win_pos_x, self.__win_pos_y = self.get_position()
+            self.__dragged = False
+            return True  # Indicate that the event was handled
+        return False  # Let other handlers process the event
+
+    def __on_button_release(self, widget, event):
+        if event.button == Gdk.BUTTON_PRIMARY:
+            self.__start_drag_x = None
+            self.__start_drag_y = None
+            if not self.__dragged:
+                self.__destroy()
+            return True
+        return False
+
+    def __on_motion_notify(self, widget, event):
+        if self.__start_drag_x is None:
+            return
+
+        dx = event.x_root - self.__start_drag_x
+        dy = event.y_root - self.__start_drag_y
+
+        if not self.__dragged:
+            if (abs(dx) > 10) or (abs(dy) > 10):
+                self.__dragged = True
+
+        if self.__dragged:
+            x = self.__win_pos_x + dx
+            y = self.__win_pos_y + dy
+            self.move(x, y)
+
+    def __on_key_press(self, widget, event):
+        # Check if the pressed key is Escape
+        if event.keyval == Gdk.KEY_Escape:
+            self.__destroy()  # Close the window
+            return True  # Indicate that the event has been handled
+        return False  # Let other handlers process the event
+
+    def __on_window_show(self, window):
+        self._event_box.grab_focus()
 
 
 def get_no_cover_pixbuf(width, height, scale_factor=1):
@@ -203,9 +274,7 @@ class ResizeImage(Gtk.Bin):
         if self._path:
             if width < (2 * scale_factor) or height < (2 * scale_factor):
                 return
-            pixbuf = scale(
-                pixbuf, (width - 2 * scale_factor, height - 2 * scale_factor)
-            )
+            pixbuf = scale(pixbuf, (width - 2 * scale_factor, height - 2 * scale_factor))
             pixbuf = add_border_widget(pixbuf, self)
         else:
             pixbuf = scale(pixbuf, (width, height))
@@ -277,7 +346,6 @@ class CoverImage(Gtk.EventBox):
     def update_bci(self, albumfile):
         # If there's a big image displaying, it should update.
         if self.__current_bci is not None:
-            self.__current_bci.destroy()
             if albumfile:
                 if self._scale:
                     self.__show_cover(self.__song, self._scale)
@@ -295,17 +363,14 @@ class CoverImage(Gtk.EventBox):
         if not song:
             return None
 
-        if (
-            event.type != Gdk.EventType.BUTTON_PRESS
-            or event.button == Gdk.BUTTON_MIDDLE
-        ):
+        if event.type != Gdk.EventType.BUTTON_PRESS or event.button == Gdk.BUTTON_MIDDLE:
             return False
 
         return self.__show_cover(song, scale=self._scale)
 
     def __show_cover(self, song, scale=0.5):
         """Show the cover as a detached BigCenteredImage.
-        If one is already showing, destroy it instead
+        If one is already showing, update it
         If there is no image, run the AlbumArt plugin
         """
         if not self.__file and song.is_file:
@@ -318,22 +383,21 @@ class CoverImage(Gtk.EventBox):
 
             return True
 
-        if self.__current_bci is not None:
-            # We're displaying it; destroy it.
-            self.__current_bci.destroy()
-            return True
-
         if not self.__file:
             return False
 
         try:
-            self.__current_bci = BigCenteredImage(
-                song.comma("album"), self.__file, parent=self, scale=scale
-            )
+            if self.__current_bci is not None:
+                self.__current_bci.update_image(
+                    song.comma("album"), self.__file, self, scale=scale
+                )
+            else:
+                self.__current_bci = BigCenteredImage(
+                    song.comma("album"), self.__file, parent=self, scale=scale
+                )
+                self.__current_bci.connect("destroy", self.__reset_bci)
+                self.__current_bci.show()
         except GLib.GError:  # reload in case the image file is gone
             self.refresh()
-        else:
-            self.__current_bci.show()
-            self.__current_bci.connect("destroy", self.__reset_bci)
 
         return True
