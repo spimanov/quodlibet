@@ -372,17 +372,17 @@ class SongsMenu(Gtk.Menu):
 
         def _finished(p, successes, failures):
             msg = (
-                f"{util.bold(successes)} "
+                f"{util.bold(str(successes))} "
                 + _("successful")
-                + f"\n{util.bold(failures)} "
+                + f"\n{util.bold(str(failures))} "
                 + _("failed")
             )
             print_d(msg.replace("\n", "; "))
             warning = Message(
                 Gtk.MessageType.INFO,
                 app.window,
-                _("Downloads complete"),
-                msg,
+                title=_("Downloads complete"),
+                description=msg,
                 escape_desc=False,
             )
             warning.run()
