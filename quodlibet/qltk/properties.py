@@ -7,7 +7,7 @@
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
 
-from gi.repository import Gtk, GObject, Pango
+from gi.repository import Gdk, Gtk, GObject, Pango
 
 from quodlibet.qltk.bookmarks import EditBookmarksPane
 from quodlibet.qltk.lyrics import LyricsPane
@@ -55,6 +55,8 @@ class SongProperties(qltk.Window, PersistentWindowMixin):
         self.set_default_size(default_width, 500)
 
         self.enable_window_tracking("quodlibet_properties", size_suffix=config_suffix)
+
+        self.connect("key-press-event", self.__on_key_press)
 
         self.auto_save_on_change = config.getboolean(
             "editing", "auto_save_changes", False
@@ -218,3 +220,15 @@ class SongProperties(qltk.Window, PersistentWindowMixin):
 
     def switch_to_lyrics(self):
         self.notebook.set_current_page(4)
+
+    def __on_key_press(self ,widget, event):
+        # Check if the pressed key is Escape
+        if event.keyval == Gdk.KEY_Escape:
+            ctl = self.get_focus()
+            if ctl and ctl.get_name() == "GtkEntry":
+                return False  # Let other handlers process the event
+
+            self.destroy()  # Close the window
+            return True  # Indicate that the event has been handled
+        return False  # Let other handlers process the event
+
