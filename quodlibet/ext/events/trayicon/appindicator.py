@@ -8,6 +8,7 @@
 # (at your option) any later version.
 
 import gi
+import html
 
 try:
     gi.require_version("AppIndicator3", "0.1")
@@ -47,7 +48,7 @@ class AppIndicator(BaseIndicator):
         )
 
         self.indicator.set_icon_theme_path(quodlibet.get_image_dir())
-        self.indicator.set_title(app.name)
+        self.indicator.set_title(html.escape(app.name))
         self.indicator.set_status(AppIndicator3.IndicatorStatus.ACTIVE)
         self.menu = IndicatorMenu(app, add_show_item=True)
 
@@ -73,7 +74,7 @@ class AppIndicator(BaseIndicator):
         else:
             tooltip = _("Not playing")
 
-        self.indicator.set_title(tooltip)
+        self.indicator.set_title(html.escape(tooltip))
 
     def set_paused(self, value):
         self.menu.set_paused(value)
