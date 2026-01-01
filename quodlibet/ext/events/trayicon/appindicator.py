@@ -40,7 +40,7 @@ def get_next_app_id(state=[0]):  # noqa
 class AppIndicator(BaseIndicator):
     def __init__(self):
         # KDE doesn't support symbolic icons afaics
-        icon_name = app.icon_name if is_plasma() else app.symbolic_icon_name
+        icon_name = app.icon_name if is_plasma() else app.icon_name
         self.indicator = AppIndicator3.Indicator.new(
             get_next_app_id(),
             icon_name,
@@ -77,6 +77,11 @@ class AppIndicator(BaseIndicator):
         self.indicator.set_title(html.escape(tooltip))
 
     def set_paused(self, value):
+        if app.player.paused:
+            self.indicator.set_icon(app.icon_name + "-paused")
+        else:
+            self.indicator.set_icon(app.icon_name)
+
         self.menu.set_paused(value)
 
     def set_song(self, song):
