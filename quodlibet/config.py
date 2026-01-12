@@ -195,6 +195,8 @@ INITIAL: dict[str, dict[str, str]] = {
         # Amount of colour to apply to validating text entries
         # (0.0 = no colour, 1.0 = full colour)
         "validator_colorise": "0.4",
+        # show context menu item `open in puddletag`
+        "show_open_with_puddletag": "false" if (is_osx() or is_windows()) else "true",
     },
     "autosave": {
         # Maximum time, in seconds, before saving the play queue to disk.

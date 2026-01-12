@@ -6,6 +6,8 @@
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
 
+import subprocess
+
 from gi.repository import Gtk
 
 from quodlibet.formats import AudioFile
@@ -15,6 +17,7 @@ from quodlibet.qltk.chooser import choose_folders
 from quodlibet.qltk.download import DownloadProgress
 from quodlibet.qltk.pluginwin import PluginWindow
 
+from quodlibet import config
 from quodlibet import ngettext, _, print_d, app, util
 from quodlibet import qltk
 from quodlibet.errorreport import errorhook
@@ -287,6 +290,7 @@ class SongsMenu(Gtk.Menu):
         accels=True,
         removal_confirmer=None,
         folder_chooser=None,
+        open_with_puddletag=True,
     ):
         super().__init__()
         # The library may actually be a librarian; if it is, use it,
@@ -346,8 +350,17 @@ class SongsMenu(Gtk.Menu):
         if info:
             self.init_info(accels, songs, librarian)
 
-        if show_files and any(is_a_file(s) for s in songs):
-            self.init_show_files(songs)
+        if open_with_puddletag:
+            open_with_puddletag = config.getboolean(
+                    "settings", "show_open_with_puddletag", True
+            )
+
+        if (show_files or open_with_puddletag) and any(is_a_file(s) for s in songs):
+            if show_files:
+                self.init_show_files(songs)
+
+            if open_with_puddletag:
+                self.init_open_with_puddletag(songs)
 
         if download:
             self.init_download(songs, folder_chooser)
@@ -428,6 +441,38 @@ class SongsMenu(Gtk.Menu):
         b = qltk.MenuItem(text, Icons.DOCUMENT_OPEN)
         b.set_sensitive(bool(songs) and len(songs) < MenuItemPlugin.MAX_INVOCATIONS)
         b.connect("activate", show_files_cb)
+        self.append(b)
+
+    def init_open_with_puddletag(self, songs):
+        def _open_with_puddletag_cb(menu_item):
+            print_d("Trying to show files...")
+
+            files_to_show_in_puddletag = []
+            for s in songs:
+                files_to_show_in_puddletag.append(s("~filename"))
+
+            try:
+                args = ["puddletag"]
+                args.extend(files_to_show_in_puddletag)
+                if subprocess.call(args) != 0:
+                    raise OSError("puddletag executing has returned unexpected status")
+            except OSError as _:
+                parent = get_menu_item_top_parent(menu_item)
+                msg = ErrorMessage(
+                    parent,
+                    _("Unable to open files with puddletag"),
+                    _("Error opening files, or there is no puddletag app available."),
+                )
+                msg.run()
+
+        self.separate()
+        total = len([s for s in songs if is_a_file(s)])
+        text = ngettext(
+            "_Open with puddletag", "_Open %(total)d files in puddletag", total
+        ) % {"total": total}
+        b = qltk.MenuItem(text, Icons.EDIT)
+        b.set_sensitive(bool(songs) and len(songs) < MenuItemPlugin.MAX_INVOCATIONS)
+        b.connect("activate", _open_with_puddletag_cb)
         self.append(b)
 
     def init_info(self, accels, songs, librarian):

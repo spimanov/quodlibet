@@ -309,6 +309,12 @@ class AdvancedPreferencesPane(Gtk.VBox):
                 "Use GStreamer playbin3",
                 "Use GStreamer playbin3 instead of playbin for playback.",
             ),
+            boolean_config(
+                "settings",
+                "show_open_with_puddletag",
+                "Show 'Open with puddletag' in context menu",
+                "Show 'Open with puddletag' context menu item for a song.",
+            ),
         ]
 
         # Tabulate all settings for neatness
