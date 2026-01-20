@@ -309,6 +309,12 @@ class AudioFile(dict, ImageContainer, HasKey):
             # Only migrate keys that aren't (probably) persisted to file (#3569)
             if key in MIGRATE - persisted_keys:
                 saved[key] = self[key]
+                continue
+
+            # Migrate all custom keys
+            if key.startswith("~"):
+                saved[key] = self[key]
+
         self.clear()
         self["~filename"] = fn
         try:
