@@ -445,7 +445,7 @@ class SongsMenu(Gtk.Menu):
 
     def init_open_with_puddletag(self, songs):
         def _open_with_puddletag_cb(menu_item):
-            print_d("Trying to show files...")
+            print_d("Trying to open files in puddletag...")
 
             files_to_show_in_puddletag = []
             for s in songs:
@@ -454,8 +454,7 @@ class SongsMenu(Gtk.Menu):
             try:
                 args = ["puddletag"]
                 args.extend(files_to_show_in_puddletag)
-                if subprocess.call(args) != 0:
-                    raise OSError("puddletag executing has returned unexpected status")
+                subprocess.Popen(args, start_new_session=True)
             except OSError as _:
                 parent = get_menu_item_top_parent(menu_item)
                 msg = ErrorMessage(
