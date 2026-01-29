@@ -259,7 +259,7 @@ class FileSystem(Browser, Gtk.HBox):
                             songs.append(song)
             except OSError as e:
                 print_d(f"Got {e} in {dir}")
-        self.__library.add(to_add)
+        #self.__library.add(to_add)
         yield songs
 
     def __songs_selected(self, view):
