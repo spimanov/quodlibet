@@ -467,11 +467,12 @@ class WatchedFileLibraryMixin(FileLibrary):
         other_file: Gio.File | None,
         event: Gio.FileMonitorEvent,
     ) -> None:
-        if event == Event.CHANGES_DONE_HINT:
+        #if event == Event.CHANGES_DONE_HINT:
             # This seems to work fine on most Linux, but not on Windows / macOS
             # Or at least, not in CI anyway.
             # So shortcut the whole thing
-            return
+            # 2026-01-29 It works now, so the shortcut has been commented out
+        #    return
         try:
             file_path = main_file.get_path()
             if file_path is None:
@@ -525,8 +526,12 @@ class WatchedFileLibraryMixin(FileLibrary):
                         # before we get here, so let's try adding the new path back
                         self.add_filename(other_path)
 
-            elif event == Event.CHANGED:
+            elif event == Event.CHANGES_DONE_HINT:
                 if song:
+                    # Once the event is fired, the file is still being updated
+                    # sleep for 100 msec
+                    # time.sleep(0.1)
+
                     # QL created (or knew about) this one; still check if it changed
                     if not song.valid():
                         self.reload(song)
