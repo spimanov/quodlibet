@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Quod Libet 0.24\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-25 11:38+0100\n"
-"PO-Revision-Date: 2025-10-16 11:07+0000\n"
+"PO-Revision-Date: 2026-01-30 04:01+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/quodlibet/quodlibet/zh_Hant/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 5.16-dev\n"
 
 #: quodlibet/browsers/albums/main.py:226
 #: quodlibet/browsers/covergrid/main.py:57
@@ -160,7 +160,7 @@ msgstr "專輯顯示"
 #: quodlibet/ext/songsmenu/filterall.py:48 quodlibet/qltk/bookmarks.py:120
 #: quodlibet/qltk/cbes.py:95 quodlibet/qltk/data_editors.py:98
 #: quodlibet/qltk/data_editors.py:329 quodlibet/qltk/pluginwin.py:101
-#: quodlibet/qltk/pluginwin.py:443 quodlibet/qltk/prefs.py:897
+#: quodlibet/qltk/pluginwin.py:443 quodlibet/qltk/prefs.py:895
 #: quodlibet/qltk/textedit.py:167 quodlibet/update.py:154
 msgid "_Close"
 msgstr "關閉(_C)"
@@ -276,7 +276,7 @@ msgstr "套用(_A)"
 #: quodlibet/qltk/delete.py:139 quodlibet/qltk/edittags.py:334
 #: quodlibet/qltk/_editutils.py:40 quodlibet/qltk/getstring.py:33
 #: quodlibet/qltk/maskedbox.py:27 quodlibet/qltk/matchdialog.py:82
-#: quodlibet/qltk/msg.py:74 quodlibet/qltk/msg.py:116 quodlibet/qltk/msg.py:131
+#: quodlibet/qltk/msg.py:71 quodlibet/qltk/msg.py:113 quodlibet/qltk/msg.py:128
 #: quodlibet/qltk/quodlibetwindow.py:1500 quodlibet/qltk/ratingsmenu.py:39
 #: quodlibet/qltk/scanbox.py:154 quodlibet/update.py:94
 msgid "_Cancel"
@@ -527,38 +527,39 @@ msgstr "增加站台(_A)…"
 msgid "_Update Stations"
 msgstr "更新站台(_U)"
 
-#: quodlibet/browsers/iradio.py:859
+#: quodlibet/browsers/iradio.py:860
 msgid "No stations found"
 msgstr "未找到站台"
 
-#: quodlibet/browsers/iradio.py:860
+#: quodlibet/browsers/iradio.py:861
 #, python-format
 msgid "No Internet radio stations were found at %s."
 msgstr "在 %s 沒有網路電台被找到。"
 
-#: quodlibet/browsers/iradio.py:873
+#: quodlibet/browsers/iradio.py:874
 msgid "Nothing to add"
 msgstr "沒有增加"
 
-#: quodlibet/browsers/iradio.py:874
+#: quodlibet/browsers/iradio.py:875
 msgid "All stations listed are already in your library."
 msgstr "全部列出的站台已經在您的音樂庫之中了。"
 
-#: quodlibet/browsers/iradio.py:897
+#: quodlibet/browsers/iradio.py:898
 msgid "Add to Favorites"
 msgstr "加入至喜愛項目"
 
-#: quodlibet/browsers/iradio.py:901
+#: quodlibet/browsers/iradio.py:902
 msgid "Remove from Favorites"
 msgstr "從喜愛項目中移除"
 
-#: quodlibet/browsers/iradio.py:1006
+#: quodlibet/browsers/iradio.py:1007
 #, python-format
 msgid "%(count)d station"
 msgid_plural "%(count)d stations"
 msgstr[0] "%(count)d 站台"
 
 #: quodlibet/browsers/paned/main.py:41 quodlibet/qltk/shortcuts.py:65
+#: data/io.github.quodlibet.QuodLibet.appdata.xml.in:43
 msgid "Paned Browser"
 msgstr "分格瀏覽"
 
@@ -873,11 +874,11 @@ msgstr "輸入代碼…"
 msgid "Log in to %s"
 msgstr "登入至 %s"
 
-#: quodlibet/browsers/soundcloud/util.py:94
+#: quodlibet/browsers/soundcloud/util.py:103
 msgid "Soundcloud authorisation"
 msgstr "Soundcloud 授權"
 
-#: quodlibet/browsers/soundcloud/util.py:95
+#: quodlibet/browsers/soundcloud/util.py:104
 msgid "Enter Soundcloud auth code:"
 msgstr "輸入 Soundcloud 授權碼："
 
@@ -1061,7 +1062,7 @@ msgstr "設定目前的瀏覽"
 
 #: quodlibet/cli.py:163
 msgid "Stop after the playing song"
-msgstr "播放曲目完結後停止"
+msgstr "目前播放曲目結束後停止"
 
 #: quodlibet/cli.py:164
 msgid "Open a new browser"
@@ -1318,7 +1319,7 @@ msgstr "位置(_P)："
 msgid "_Cover size:"
 msgstr "封面大小(_C)："
 
-#: quodlibet/ext/events/animosd/prefs.py:201 quodlibet/qltk/prefs.py:311
+#: quodlibet/ext/events/animosd/prefs.py:201 quodlibet/qltk/prefs.py:310
 msgid "Display"
 msgstr "顯示"
 
@@ -1355,7 +1356,7 @@ msgid "_Fill:"
 msgstr "填滿(_F)："
 
 #: quodlibet/ext/events/animosd/prefs.py:256
-#: quodlibet/ext/events/synchronizedlyrics.py:65
+#: quodlibet/ext/events/synchronizedlyrics.py:66
 msgid "Colors"
 msgstr "顏色"
 
@@ -1391,7 +1392,7 @@ msgstr "預覽"
 
 #: quodlibet/ext/events/appinfo.py:33
 msgid "Application Information"
-msgstr "憗用程式資訊"
+msgstr "應用程式資訊"
 
 #: quodlibet/ext/events/appinfo.py:34
 msgid "Various information about the application and its environment."
@@ -1502,7 +1503,7 @@ msgstr ""
 "%s"
 
 #: quodlibet/ext/events/auto_update_tags_in_files.py:113
-#: quodlibet/qltk/prefs.py:654
+#: quodlibet/qltk/prefs.py:652
 msgid "Save ratings and play _counts in tags"
 msgstr "儲存評分及播放次數於標籤(_C)"
 
@@ -1532,7 +1533,7 @@ msgstr "更新策略(_U)："
 #: quodlibet/ext/gstreamer/crossfeed.py:157
 #: quodlibet/ext/gstreamer/karaoke.py:106 quodlibet/ext/gstreamer/pitch.py:102
 #: quodlibet/ext/playorder/queue.py:43 quodlibet/ext/query/missing.py:38
-#: quodlibet/qltk/prefs.py:865
+#: quodlibet/qltk/prefs.py:863
 msgid "Preferences"
 msgstr "偏好設定"
 
@@ -1555,8 +1556,8 @@ msgid ""
 "'accelerated' algorithm from vux (Vacillating Utilitarian eXtemporizer) by "
 "Brian Nelson."
 msgstr ""
-"當曲目播放或跳過時自動進行評分。此功能使用來自 Brian Nelson 的 VUX (Vaching "
-"Uptritaration Expolizer) 的 '加速\" 演算法。"
+"當曲目播放或跳過時自動進行評分。此功能使用來自 Brian Nelson 的 vux "
+"(Vacillating Utilitarian eXtemporizer) 的 '加速' 演算法。"
 
 #: quodlibet/ext/events/bansheeimport.py:105
 msgid "Specified Banshee database is malformed or missing"
@@ -1621,9 +1622,8 @@ msgid ""
 msgstr "變更您的放棄狀態訊息，根據您目前所收聽的。"
 
 #: quodlibet/ext/events/discord_status.py:202
-#, fuzzy
 msgid "(Paused)"
-msgstr "暫停"
+msgstr "(已暫停)"
 
 #: quodlibet/ext/events/discord_status.py:309
 msgid "Status Line #1"
@@ -1767,7 +1767,7 @@ msgstr "音效名稱用於儲存："
 #: quodlibet/ext/songsmenu/playlist.py:56
 #: quodlibet/ext/songsmenu/replaygain.py:361
 #: quodlibet/ext/songsmenu/tapbpm.py:183 quodlibet/qltk/_editutils.py:41
-#: quodlibet/qltk/lyrics.py:35 quodlibet/qltk/msg.py:73
+#: quodlibet/qltk/lyrics.py:35 quodlibet/qltk/msg.py:70
 #: quodlibet/qltk/renamefiles.py:257 quodlibet/qltk/tagsfrompath.py:154
 #: quodlibet/qltk/tracknumbers.py:111
 msgid "_Save"
@@ -1909,7 +1909,7 @@ msgstr "變更使用者介面語言。"
 msgid "System Default"
 msgstr "系統預設"
 
-#: quodlibet/ext/events/language.py:67 quodlibet/qltk/prefs.py:825
+#: quodlibet/ext/events/language.py:67 quodlibet/qltk/prefs.py:823
 msgid "A restart is required for any changes to take effect"
 msgstr "任何變更都需要重新啟動才能發生作用"
 
@@ -2471,7 +2471,7 @@ msgstr "錯誤找尋 %s 。 請檢查設定"
 
 #: quodlibet/ext/events/stop_on_pause.py:20
 msgid "Stop on Pause"
-msgstr "暫停時停止"
+msgstr "暫停時即停止"
 
 #: quodlibet/ext/events/stop_on_pause.py:23
 msgid ""
@@ -2868,29 +2868,27 @@ msgid "skipped {count} file synchronized previously"
 msgid_plural "skipped {count} files synchronized previously"
 msgstr[0] "跳過 {count} 檔案先前已經同步過"
 
-#: quodlibet/ext/events/synchronizedlyrics.py:28
+#: quodlibet/ext/events/synchronizedlyrics.py:27
 msgid "Synchronized Lyrics"
 msgstr "同步歌詞"
 
-#: quodlibet/ext/events/synchronizedlyrics.py:30
-msgid ""
-"Shows synchronized lyrics from an .lrc file with same name as the track (or "
-"similar)."
-msgstr "顯示來自 .lrc 檔案的同步歌詞，其名稱與音軌相同(或近似)。"
+#: quodlibet/ext/events/synchronizedlyrics.py:29
+msgid "Shows synchronized lyrics from embedded lyrics, or a lyrics (lrc) file."
+msgstr "顯示同步取得歌詞，來自內嵌的歌詞、或是歌詞(lrc)檔案。"
 
-#: quodlibet/ext/events/synchronizedlyrics.py:68
+#: quodlibet/ext/events/synchronizedlyrics.py:69
 msgid "Text:"
 msgstr "文字："
 
-#: quodlibet/ext/events/synchronizedlyrics.py:78
+#: quodlibet/ext/events/synchronizedlyrics.py:79
 msgid "Background:"
 msgstr "背景："
 
-#: quodlibet/ext/events/synchronizedlyrics.py:89
+#: quodlibet/ext/events/synchronizedlyrics.py:90
 msgid "Font"
 msgstr "字型"
 
-#: quodlibet/ext/events/synchronizedlyrics.py:92
+#: quodlibet/ext/events/synchronizedlyrics.py:93
 msgid "Size (px):"
 msgstr "大小 (px)："
 
@@ -3037,7 +3035,7 @@ msgid "Open _Browser"
 msgstr "開啟瀏覽器(_B)"
 
 #. Stock edit doesn't have ellipsis chars.
-#: quodlibet/ext/events/trayicon/menu.py:105 quodlibet/qltk/prefs.py:122
+#: quodlibet/ext/events/trayicon/menu.py:105 quodlibet/qltk/prefs.py:121
 #: quodlibet/qltk/quodlibetwindow.py:982 quodlibet/qltk/songsmenu.py:449
 msgid "_Edit…"
 msgstr "編輯(_E)…"
@@ -3056,8 +3054,8 @@ msgstr "播放清單(_L)"
 msgid "_Quit"
 msgstr "停止(_Q)"
 
-#: quodlibet/ext/events/trayicon/prefs.py:39 quodlibet/qltk/prefs.py:105
-#: quodlibet/qltk/prefs.py:519 quodlibet/qltk/prefs.py:840
+#: quodlibet/ext/events/trayicon/prefs.py:39 quodlibet/qltk/prefs.py:104
+#: quodlibet/qltk/prefs.py:517 quodlibet/qltk/prefs.py:838
 msgid "Behavior"
 msgstr "動作"
 
@@ -3164,15 +3162,15 @@ msgstr "滾輪定位值量(毫秒)："
 msgid "Waveform height (pixels):"
 msgstr "波形高度(像素)："
 
-#: quodlibet/ext/events/write_cover.py:33
+#: quodlibet/ext/events/write_cover.py:34
 msgid "Picture Saver"
 msgstr "圖片存入檔案"
 
-#: quodlibet/ext/events/write_cover.py:34
+#: quodlibet/ext/events/write_cover.py:35
 msgid "Saves the cover image of the current song to a file."
 msgstr "儲存封面圖片至目前歌曲檔案。"
 
-#: quodlibet/ext/events/write_cover.py:67
+#: quodlibet/ext/events/write_cover.py:64
 msgid "File:"
 msgstr "檔案："
 
@@ -4989,7 +4987,7 @@ msgstr "標籤\"%s\" 未找到。"
 #: quodlibet/library/file.py:228 quodlibet/library/file.py:247
 #: quodlibet/library/file.py:355 quodlibet/library/file.py:419
 #: quodlibet/library/file.py:592 quodlibet/qltk/information.py:243
-#: quodlibet/qltk/prefs.py:781 quodlibet/util/library.py:120
+#: quodlibet/qltk/prefs.py:779 quodlibet/util/library.py:120
 msgid "Library"
 msgstr "音樂庫"
 
@@ -5461,15 +5459,15 @@ msgstr "用途"
 msgid "Revert to default"
 msgstr "重設還原成預設"
 
-#: quodlibet/qltk/advanced_prefs.py:296
+#: quodlibet/qltk/advanced_prefs.py:297
 msgid "Filename patterns for lyric files"
 msgstr "檔案名稱型式用於歌詞檔案"
 
-#: quodlibet/qltk/advanced_prefs.py:302
+#: quodlibet/qltk/advanced_prefs.py:303
 msgid "Directory strings or patterns for lyric files"
 msgstr "目錄字串或型式用於歌詞檔案"
 
-#: quodlibet/qltk/advanced_prefs.py:341
+#: quodlibet/qltk/advanced_prefs.py:342
 msgid "I know what I'm doing!"
 msgstr "我明白現在我在做什麼了！"
 
@@ -6146,31 +6144,31 @@ msgstr ""
 msgid "Right side order:"
 msgstr "右側順序："
 
-#: quodlibet/qltk/msg.py:59
+#: quodlibet/qltk/msg.py:56
 msgid "Discard tag changes?"
 msgstr "放棄標籤的變更？"
 
-#: quodlibet/qltk/msg.py:61
+#: quodlibet/qltk/msg.py:58
 msgid ""
 "Tags have been changed but not saved. Save these files, or revert and "
 "discard changes?"
 msgstr "標籤已經改變但尚未儲存。要儲存檔案？或是還原並放棄變更？"
 
-#: quodlibet/qltk/msg.py:75 quodlibet/qltk/textedit.py:63
+#: quodlibet/qltk/msg.py:72 quodlibet/qltk/textedit.py:63
 #: quodlibet/qltk/tracknumbers.py:114
 msgid "_Revert"
 msgstr "還原(_R)"
 
-#: quodlibet/qltk/msg.py:125
+#: quodlibet/qltk/msg.py:122
 msgid "File exists"
 msgstr "檔案存在"
 
-#: quodlibet/qltk/msg.py:127
+#: quodlibet/qltk/msg.py:124
 #, python-format
 msgid "Replace %(file-name)s?"
 msgstr "取代 %(file-name)s ？"
 
-#: quodlibet/qltk/msg.py:133
+#: quodlibet/qltk/msg.py:130
 msgid "_Replace File"
 msgstr "取代檔案(_R)"
 
@@ -6303,190 +6301,194 @@ msgstr "自動跳到播放中的曲目(_J)"
 msgid "When the playing song changes, scroll to it in the song list"
 msgstr "當變更播放中的曲目時，捲動清單到該曲目位置"
 
-#: quodlibet/qltk/prefs.py:79
+#: quodlibet/qltk/prefs.py:78
 msgid "_Sort songs when tags are modified"
 msgstr "當標籤更改後排序曲目(_S)"
 
-#: quodlibet/qltk/prefs.py:84
+#: quodlibet/qltk/prefs.py:83
 msgid "Automatically re-sort songs in the song list when tags are modified"
 msgstr "當標籤更改後，曲目列表自動重新排序"
 
-#: quodlibet/qltk/prefs.py:89
+#: quodlibet/qltk/prefs.py:88
 msgid "Always allow sorting"
 msgstr "總是允許排序"
 
-#: quodlibet/qltk/prefs.py:94
+#: quodlibet/qltk/prefs.py:93
 msgid "Allow sorting by column headers, even for playlists etc"
 msgstr "允許排序，依照欄位標頭，用於播放清單等"
 
-#: quodlibet/qltk/prefs.py:117
+#: quodlibet/qltk/prefs.py:116
 msgid "_Others:"
 msgstr "其他(_O)："
 
-#: quodlibet/qltk/prefs.py:125
+#: quodlibet/qltk/prefs.py:124
 msgid "Add or remove additional column headers"
 msgstr "增加或移除外加的欄位標頭"
 
-#: quodlibet/qltk/prefs.py:135
+#: quodlibet/qltk/prefs.py:134
 msgid "Visible Columns"
 msgstr "可見欄位"
 
-#: quodlibet/qltk/prefs.py:157
+#: quodlibet/qltk/prefs.py:156
 msgid "Title includes _version"
 msgstr "標題包含版本(_V)"
 
-#: quodlibet/qltk/prefs.py:158
+#: quodlibet/qltk/prefs.py:157
 msgid "Album includes _disc subtitle"
 msgstr "專輯包含碟片副標題(_D)"
 
-#: quodlibet/qltk/prefs.py:159
+#: quodlibet/qltk/prefs.py:158
 msgid "Artist includes all _people"
 msgstr "藝人包含全部人員(_P)"
 
-#: quodlibet/qltk/prefs.py:160
+#: quodlibet/qltk/prefs.py:159
 msgid "Filename includes _folder"
 msgstr "檔案名稱包含資料夾(_F)"
 
-#: quodlibet/qltk/prefs.py:161
+#: quodlibet/qltk/prefs.py:160
 msgid "Column Preferences"
 msgstr "欄位設定"
 
-#: quodlibet/qltk/prefs.py:164
+#: quodlibet/qltk/prefs.py:163
 msgid "_Update Columns"
 msgstr "更新欄位(_U)"
 
-#: quodlibet/qltk/prefs.py:167
+#: quodlibet/qltk/prefs.py:166
 msgid "Apply current configuration to song list, adding new columns to the end"
 msgstr "套用目前設定至曲目清單，在末端加上新的欄位"
 
-#: quodlibet/qltk/prefs.py:183 quodlibet/qltk/shortcuts.py:31
+#: quodlibet/qltk/prefs.py:182 quodlibet/qltk/shortcuts.py:31
 msgid "Song List"
 msgstr "曲目清單"
 
-#: quodlibet/qltk/prefs.py:268
+#: quodlibet/qltk/prefs.py:267
 msgid "Edit Columns"
 msgstr "編輯欄位"
 
-#: quodlibet/qltk/prefs.py:305
+#: quodlibet/qltk/prefs.py:304
 msgid "Duration totals"
 msgstr "期間總計"
 
-#: quodlibet/qltk/prefs.py:315
+#: quodlibet/qltk/prefs.py:314
 msgid "_Global filter:"
 msgstr "整體篩選(_G)："
 
-#: quodlibet/qltk/prefs.py:320
+#: quodlibet/qltk/prefs.py:319
 msgid "Apply this query in addition to all others"
 msgstr "套用此查詢，加進其他全部"
 
 #. Translators: The heading of the preference group, no action
-#: quodlibet/qltk/prefs.py:324
+#: quodlibet/qltk/prefs.py:323
 msgctxt "heading"
 msgid "Search"
 msgstr "搜尋"
 
-#: quodlibet/qltk/prefs.py:328 quodlibet/qltk/shortcuts.py:25
+#: quodlibet/qltk/prefs.py:327 quodlibet/qltk/shortcuts.py:25
 msgid "Browsers"
 msgstr "瀏覽"
 
-#: quodlibet/qltk/prefs.py:334
+#: quodlibet/qltk/prefs.py:333
 msgid "Confirm _multiple ratings"
 msgstr "確認多項評分(_M)"
 
-#: quodlibet/qltk/prefs.py:339
+#: quodlibet/qltk/prefs.py:338
 msgid ""
 "Ask for confirmation before changing the rating of multiple songs at once"
 msgstr "多項曲目評分一次更改之前要求確認"
 
-#: quodlibet/qltk/prefs.py:345
+#: quodlibet/qltk/prefs.py:344
 msgid "Enable _one-click ratings"
 msgstr "啟用一鍵評分(_O)"
 
-#: quodlibet/qltk/prefs.py:350
+#: quodlibet/qltk/prefs.py:349
 msgid "Enable rating by clicking on the rating column in the song list"
 msgstr "在曲目清單中點按評分欄位即可啟用評分"
 
-#: quodlibet/qltk/prefs.py:357 quodlibet/qltk/prefs.py:754
+#: quodlibet/qltk/prefs.py:356 quodlibet/qltk/prefs.py:752
 msgid "Ratings"
 msgstr "評分"
 
-#: quodlibet/qltk/prefs.py:364
+#: quodlibet/qltk/prefs.py:363
 msgid "Prefer _embedded art"
-msgstr "偏好內嵌藝術圖案(_M)"
+msgstr "偏好所內嵌的文藝圖面(_E)"
 
-#: quodlibet/qltk/prefs.py:369
+#: quodlibet/qltk/prefs.py:368
 msgid ""
 "Choose to use artwork embedded in the audio (where available) over other "
 "sources"
-msgstr "選用在音檔(存在可用)中內嵌的圖案，而非其他來源"
+msgstr "選用音檔(存在可用)中內嵌的圖面，而非其他來源"
 
-#: quodlibet/qltk/prefs.py:376
+#: quodlibet/qltk/prefs.py:375
 msgid ""
-"The album art image file(s) to use when available (supports wildcards). If "
-"you want to supply more than one, separate them with commas."
-msgstr "專輯藝術圖檔存在即可使用(支援萬用字元)。如果提供不只一件，用逗號隔開。"
+"Only allow these filenames. Separate multiple files with commas. Supports "
+"wildcards."
+msgstr "僅允許這些檔案名稱。使用逗號來分隔多個檔案。支援使用萬用字元。"
 
-#: quodlibet/qltk/prefs.py:382
-msgid "_Preferred fixed image filename(s)"
-msgstr "偏好固定的圖案檔名(_P)"
+#: quodlibet/qltk/prefs.py:380
+msgid "Restrict image filename(s)"
+msgstr "限制圖片檔案名稱"
 
-#: quodlibet/qltk/prefs.py:403
+#: quodlibet/qltk/prefs.py:384
+msgid "Restrict album art to the specified filenames."
+msgstr "限制專輯圖面為指定的檔案名稱。"
+
+#: quodlibet/qltk/prefs.py:401
 msgid "Album Art"
 msgstr "專輯藝術設計"
 
-#: quodlibet/qltk/prefs.py:436
+#: quodlibet/qltk/prefs.py:434
 msgid "Playback"
 msgstr "播放"
 
-#: quodlibet/qltk/prefs.py:443
+#: quodlibet/qltk/prefs.py:441
 msgid "Output Configuration"
 msgstr "輸出設定"
 
-#: quodlibet/qltk/prefs.py:452
+#: quodlibet/qltk/prefs.py:450
 msgid ""
 "If no Replay Gain information is available for a song, scale the volume by "
 "this value"
 msgstr "如果曲目檔案中沒有播放增益資訊，就依此值為音量大小"
 
-#: quodlibet/qltk/prefs.py:457
+#: quodlibet/qltk/prefs.py:455
 msgid "_Fall-back gain:"
 msgstr "_Fall-back 增益："
 
-#: quodlibet/qltk/prefs.py:468
+#: quodlibet/qltk/prefs.py:466
 msgid ""
 "Scale volume for all songs by this value, as long as the result will not clip"
 msgstr "全部曲目音量調整依照此值，只要結果不會削波"
 
-#: quodlibet/qltk/prefs.py:473
+#: quodlibet/qltk/prefs.py:471
 msgid "_Pre-amp gain:"
 msgstr "_Pre-amp 增益："
 
-#: quodlibet/qltk/prefs.py:480
+#: quodlibet/qltk/prefs.py:478
 msgid "_Enable Replay Gain volume adjustment"
 msgstr "播放增益音量調整(_E)"
 
-#: quodlibet/qltk/prefs.py:500
+#: quodlibet/qltk/prefs.py:498
 msgid "Replay Gain Volume Adjustment"
 msgstr "播放增益音量調整"
 
-#: quodlibet/qltk/prefs.py:509
+#: quodlibet/qltk/prefs.py:507
 msgid "_Continue playback on startup"
 msgstr "在啟動時繼續播放(_C)"
 
-#: quodlibet/qltk/prefs.py:514
+#: quodlibet/qltk/prefs.py:512
 msgid ""
 "If music is playing on shutdown, automatically start playing on next startup"
 msgstr "如果播放時停止軟體，在下次啟動時自動開始播放"
 
-#: quodlibet/qltk/prefs.py:542
+#: quodlibet/qltk/prefs.py:540
 msgid "_Default rating:"
 msgstr "預設評分(_D)："
 
-#: quodlibet/qltk/prefs.py:587
+#: quodlibet/qltk/prefs.py:585
 msgid "Rating _scale:"
 msgstr "評分範圍(_S)："
 
-#: quodlibet/qltk/prefs.py:640
+#: quodlibet/qltk/prefs.py:638
 msgid ""
 "Bayesian Average factor (C) for aggregated ratings.\n"
 "0 means a conventional average, higher values mean that albums with few "
@@ -6497,37 +6499,37 @@ msgstr ""
 "0 表示常規平均值，數值越高表示曲目越少的專輯評分越低。變更此值會觸發全部專輯"
 "的重新計算。"
 
-#: quodlibet/qltk/prefs.py:647
+#: quodlibet/qltk/prefs.py:645
 msgid "_Bayesian averaging amount:"
 msgstr "_Bayesian 統計平均值："
 
-#: quodlibet/qltk/prefs.py:664
+#: quodlibet/qltk/prefs.py:662
 msgid "_Email:"
 msgstr "_Email 電子信箱："
 
-#: quodlibet/qltk/prefs.py:668
+#: quodlibet/qltk/prefs.py:666
 msgid "Ratings and play counts will be saved in tags for this email address"
 msgstr "評分和播放計次將會被存入標籤於此電子信箱網址"
 
-#: quodlibet/qltk/prefs.py:689
+#: quodlibet/qltk/prefs.py:687
 msgid "_Auto-save tag changes"
 msgstr "自動儲存標籤變更(_A)"
 
-#: quodlibet/qltk/prefs.py:694
+#: quodlibet/qltk/prefs.py:692
 msgid "Save changes to tags without confirmation when editing multiple files"
 msgstr "當編輯多重檔案時，要儲存標籤變更不用確認"
 
-#: quodlibet/qltk/prefs.py:712
+#: quodlibet/qltk/prefs.py:710
 msgid ""
 "A set of separators to use when splitting tag values in the tag editor. The "
 "list is space-separated."
 msgstr "在標籤編輯器中，分割標籤數值，可以使用分隔字元。此清單以空白分隔。"
 
-#: quodlibet/qltk/prefs.py:717
+#: quodlibet/qltk/prefs.py:715
 msgid "Split _tag on:"
 msgstr "分割標籤於(_T)："
 
-#: quodlibet/qltk/prefs.py:731
+#: quodlibet/qltk/prefs.py:729
 msgid ""
 "A set of separators to use when extracting subtags from tags in the tag "
 "editor. The list is space-separated, and each entry must only contain two "
@@ -6536,60 +6538,60 @@ msgstr ""
 "在標籤編輯器中，從標籤分割出次標籤，可以使用分隔字元。此清單以空白分隔，每次"
 "輸入必須只有兩個字元。"
 
-#: quodlibet/qltk/prefs.py:738
+#: quodlibet/qltk/prefs.py:736
 msgid "Split _subtag on:"
 msgstr "分割次標籤於(_S)："
 
-#: quodlibet/qltk/prefs.py:748
+#: quodlibet/qltk/prefs.py:746
 msgid "Tags"
 msgstr "標籤"
 
-#: quodlibet/qltk/prefs.py:751
+#: quodlibet/qltk/prefs.py:749
 msgid "Tag Editing"
 msgstr "標籤編輯"
 
-#: quodlibet/qltk/prefs.py:772
+#: quodlibet/qltk/prefs.py:770
 msgid "Updating for new ratings"
 msgstr "更新新的評分"
 
-#: quodlibet/qltk/prefs.py:786 quodlibet/qltk/quodlibetwindow.py:1059
+#: quodlibet/qltk/prefs.py:784 quodlibet/qltk/quodlibetwindow.py:1059
 msgid "_Scan Library"
 msgstr "掃瞄音樂庫(_S)"
 
-#: quodlibet/qltk/prefs.py:788 quodlibet/qltk/quodlibetwindow.py:1121
+#: quodlibet/qltk/prefs.py:786 quodlibet/qltk/quodlibetwindow.py:1121
 msgid "Check for changes in your library"
 msgstr "檢查您的音樂庫變更"
 
-#: quodlibet/qltk/prefs.py:793
+#: quodlibet/qltk/prefs.py:791
 msgid "Re_build Library"
 msgstr "重新建立音纅庫(_B)"
 
-#: quodlibet/qltk/prefs.py:796
+#: quodlibet/qltk/prefs.py:794
 msgid "Reload all songs in your library. This can take a long time."
 msgstr "重新載入您的音樂庫中全部曲目。這可能會花一些時間。"
 
-#: quodlibet/qltk/prefs.py:811
+#: quodlibet/qltk/prefs.py:809
 msgid "Hidden Songs"
 msgstr "隱藏曲目"
 
-#: quodlibet/qltk/prefs.py:820
+#: quodlibet/qltk/prefs.py:818
 msgid "Scan library _on start"
 msgstr "掃瞄音樂庫於啟動時(_O)"
 
-#: quodlibet/qltk/prefs.py:827
+#: quodlibet/qltk/prefs.py:825
 msgid "_Watch directories for changes"
 msgstr "監視目錄變更(_W)"
 
-#: quodlibet/qltk/prefs.py:832
+#: quodlibet/qltk/prefs.py:830
 msgid ""
 "Watch library directories for external file additions, deletions and renames."
 msgstr "監視音樂庫目錄增刪修改。"
 
-#: quodlibet/qltk/prefs.py:846
+#: quodlibet/qltk/prefs.py:844
 msgid "Scan Directories"
 msgstr "掃瞄目錄"
 
-#: quodlibet/qltk/prefs.py:854
+#: quodlibet/qltk/prefs.py:852
 msgid "Advanced"
 msgstr "進階"
 
@@ -6732,7 +6734,7 @@ msgstr "停止"
 
 #: quodlibet/qltk/quodlibetwindow.py:1011
 msgid "Stop After This Song"
-msgstr "此首歌曲播完之後停止"
+msgstr "此首曲目播完之後停止"
 
 #: quodlibet/qltk/quodlibetwindow.py:1017
 msgid "_Keyboard Shortcuts"
@@ -6856,7 +6858,7 @@ msgstr "檔案名稱"
 
 #: quodlibet/qltk/renamefiles.py:222
 msgid "_Move album art"
-msgstr "移動專輯圖案(_M)"
+msgstr "移動專輯圖面(_M)"
 
 #: quodlibet/qltk/renamefiles.py:226
 msgid ""
@@ -6865,7 +6867,7 @@ msgstr "查看 '[albumart] search_filenames' 的調設輸入，用於其圖片�
 
 #: quodlibet/qltk/renamefiles.py:233
 msgid "_Overwrite album art at target"
-msgstr "覆寫專輯圖案(_O)"
+msgstr "覆寫專輯圖面於目標(_O)"
 
 #: quodlibet/qltk/renamefiles.py:244
 msgid "_Remove empty directories"
@@ -7378,28 +7380,28 @@ msgstr "播放清單必須設置名稱"
 msgid "A playlist named %(name)s already exists at %(path)s"
 msgstr "名為 %(name)s 的播放清單已經儲存於 %(path)s"
 
-#: quodlibet/util/cover/built_in.py:37
+#: quodlibet/util/cover/built_in.py:35
 msgid "Embedded album covers"
 msgstr "內嵌的專輯封面"
 
-#: quodlibet/util/cover/built_in.py:38
+#: quodlibet/util/cover/built_in.py:36
 msgid "Uses covers embedded into audio files."
-msgstr "使用聲音檔案內嵌的封面圖案。"
+msgstr "使用聲音檔案所內嵌的封面圖面。"
 
-#: quodlibet/util/cover/built_in.py:61
+#: quodlibet/util/cover/built_in.py:63
 msgid "Filesystem cover"
 msgstr "檔案系統封面"
 
-#: quodlibet/util/cover/built_in.py:63
+#: quodlibet/util/cover/built_in.py:65
 msgid ""
 "Uses commonly named images found in common directories alongside the song."
 msgstr "使用歌曲所在目錄中找到有命名的圖檔。"
 
-#: quodlibet/util/cover/manager.py:231
+#: quodlibet/util/cover/manager.py:237
 msgid "Cover Art"
 msgstr "封面設計"
 
-#: quodlibet/util/cover/manager.py:231
+#: quodlibet/util/cover/manager.py:237
 msgid "Querying album art providers"
 msgstr "查詢專輯封面提供者"
 
@@ -7917,6 +7919,10 @@ msgstr ""
 "支援檔案格式包括 Ogg Vorbis/Opus/Speex/FLAC, MP3, FLAC, MOD/XM/IT, Musepack, "
 "Wavpack, MPEG-4 AAC, Monkeys Audio, WMA, SPC, MIDI.。"
 
+#: data/io.github.quodlibet.ExFalso.appdata.xml.in:33
+msgid "Tag editing interface"
+msgstr "標籤編輯介面"
+
 #: data/io.github.quodlibet.QuodLibet.appdata.xml.in:19
 msgid ""
 "Quod Libet is a music management program. It provides several different ways "
@@ -7926,6 +7932,20 @@ msgid ""
 msgstr ""
 "Quod Libet 是一套音樂管理工具程式，提供多種不同方式來呈現音樂庫，以及支援網路"
 "廣播及音檔播送。擁有極為彈性操作的資料標籤編輯及搜尋能力。"
+
+#: data/io.github.quodlibet.QuodLibet.appdata.xml.in:35
+msgid "Album list view"
+msgstr "專輯清單檢視"
+
+#: data/io.github.quodlibet.QuodLibet.appdata.xml.in:39
+msgid "Track list"
+msgstr "音軌清單"
+
+#~ msgid ""
+#~ "The album art image file(s) to use when available (supports wildcards). "
+#~ "If you want to supply more than one, separate them with commas."
+#~ msgstr ""
+#~ "專輯藝術圖檔存在即可使用(支援萬用字元)。如果提供不只一件，用逗號隔開。"
 
 #~ msgid "Edit _Tags"
 #~ msgstr "編輯標籤(_T)"

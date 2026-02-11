@@ -42,7 +42,7 @@ def mkdir(dir_, *args):
 
 
 def uri2gsturi(uri):
-    """Takes a correct uri and returns a gstreamer-compatible uri"""
+    """Takes a correct URI and returns a gstreamer-compatible URI"""
     if not is_windows():
         return uri
     try:
@@ -405,10 +405,6 @@ if sys.platform == "darwin":
     normalize_path = _normalize_darwin_path
 else:
     normalize_path = _normalize_path
-
-
-def path_equal(p1, p2, canonicalise=False):
-    return normalize_path(p1, canonicalise) == normalize_path(p2, canonicalise)
 
 
 def limit_path(path, ellipsis=True):

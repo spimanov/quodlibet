@@ -491,8 +491,23 @@ class GStreamerPlayer(BasePlayer, GStreamerPluginHandler):
         if isinstance(sink_element, Gst.Bin):
             sink_element = iter_to_list(sink_element.iterate_recurse)[-1]
 
+        sink_name = sink_element.get_factory().get_name()
+
+        exclusive_mode_active = False
+        if config.getboolean("player", "gst_exclusive_mode") and hasattr(
+            sink_element.props, "exclusive"
+        ):
+            sink_element.set_property("exclusive", True)
+            exclusive_mode_active = True
+
+        force_internal_volume = False
+        if sink_name == AudioSinks.WASAPI2.value and exclusive_mode_active:
+            # wasapi2sink volume doesn't work in exclusive mode,
+            # so force using our internal volume element in this case
+            force_internal_volume = True
+
         self._ext_vol_element = None
-        if hasattr(sink_element.props, "volume"):
+        if hasattr(sink_element.props, "volume") and not force_internal_volume:
             self._ext_vol_element = sink_element
 
             # In case we use the sink volume directly we can increase buffering
@@ -508,15 +523,15 @@ class GStreamerPlayer(BasePlayer, GStreamerPluginHandler):
             self._ext_vol_element.connect("notify::volume", ext_volume_notify)
 
         self._ext_mute_element = None
-        if (
-            hasattr(sink_element.props, "mute")
-            and sink_element.get_factory().get_name() != "directsoundsink"
-        ):
-            # directsoundsink has a mute property but it doesn't work
-            # https://bugzilla.gnome.org/show_bug.cgi?id=755106
+        if hasattr(sink_element.props, "mute"):
             self._ext_mute_element = sink_element
 
             def mute_notify(*args):
+                # directsoundsink has a mute property but it doesn't work properly
+                # https://bugzilla.gnome.org/show_bug.cgi?id=755106
+                # un-muting doesn't take effect until we set the volume again
+                if not self.props.mute and sink_name == AudioSinks.DIRECTSOUND.value:
+                    self.props.volume = self.props.volume
                 # gets called from a thread
                 GLib.idle_add(self.notify, "mute")
 
@@ -757,9 +772,9 @@ class GStreamerPlayer(BasePlayer, GStreamerPluginHandler):
             return None
         self._in_gapless_transition = True
 
-        print_d("Select next song in mainloop..")
+        print_d("Select next song in mainloop…")
         self._source.next_ended()
-        print_d("..done.")
+        print_d("…next song done.")
 
         song = self._source.current
         if song is not None:
@@ -779,17 +794,17 @@ class GStreamerPlayer(BasePlayer, GStreamerPluginHandler):
             # in the mainloop before our function gets scheduled.
             # In this case abort and do nothing, which results
             # in a non-gapless transition.
-            print_e(f"About to finish (async): {e}")
+            print_e(f"About to finish (async): {e!r}")
             return
         except MainRunnerAbortedError as e:
-            print_e(f"About to finish (async): {e}")
+            print_e(f"About to finish (async): {e!r}")
             return
         except MainRunnerError:
             util.print_exc()
             return
 
         if uri is not None:
-            print_d("About to finish (async): setting uri")
+            print_d(f"About to finish (async): setting URI to {uri}")
             self._set_uri(uri)
         print_d("About to finish (async): done")
 

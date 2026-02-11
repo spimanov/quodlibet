@@ -43,10 +43,10 @@ quodlibet = "quodlibet.main:main"
 
 [dependency-groups]
 dev = [
-  "pytest>=8,<9",
+  "pytest>=8,<10",
   "polib>=1.2.0,<2",
   "coverage[toml]>=7.2.1,<8",
-  "mypy>=1.14.1,<2",
+  "mypy>=1.14.1,<1.19",
   "flaky>=3.7.0,<4",
   "types-docutils>=0.21.0,<0.22",
   "types-certifi>=2021.10.8.3,<2022",
@@ -68,6 +68,28 @@ package-mode = false
 
 [tool.poetry.group.docs]
 optional = true
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
+mypy_path = ["quodlibet/packages"]
+exclude = "(quodlibet/packages/.+/.+\\.py|dev-utils/.*)"
+follow_imports = "silent"
+disable_error_code = "annotation-unchecked"
+
+[[tool.mypy.overrides]]
+module = ["quodlibet.packages", "tests.*", "gi.repository", "gdist.*"]
+ignore_errors = true
+
+[tool.pytest]
+junit_suite_name = "quodlibet"
+# Pytest long traces are way too long in bulk
+addopts = ["--tb=short"]
+filterwarnings = ["ignore::DeprecationWarning"]
+markers = [
+  "quality: Code quality tests (e.g. PEP-8 compliance)",
+  "network: Tests that need working internet connectivity",
+]
 
 [tool.ruff]
 target-version = "py310"
